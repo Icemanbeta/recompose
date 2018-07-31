@@ -7,7 +7,7 @@ const withState = (
   stateUpdaterName,
   initialState
 ) => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
   class WithState extends Component {
     state = {
       stateValue:

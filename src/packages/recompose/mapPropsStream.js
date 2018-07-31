@@ -13,7 +13,10 @@ export const mapPropsStreamWithConfig = config => {
     toESObservable: identity,
   })
   return transform => BaseComponent => {
-    const factory = createFactory(BaseComponent)
+    const factory = typeof BaseComponent === 'function' ?
+      BaseComponent :
+      createFactory(BaseComponent)
+
     const { fromESObservable, toESObservable } = config
     return componentFromStream(props$ => ({
       subscribe(observer) {

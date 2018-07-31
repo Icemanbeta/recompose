@@ -10,7 +10,7 @@ const withReducer = (
   reducer,
   initialState
 ) => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
   class WithReducer extends Component {
     state = {
       stateValue: this.initializeStateValue(),

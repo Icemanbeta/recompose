@@ -5,7 +5,7 @@ import wrapDisplayName from './wrapDisplayName'
 import mapValues from './utils/mapValues'
 
 const withHandlers = handlers => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
   class WithHandlers extends Component {
     handlers = mapValues(
       typeof handlers === 'function' ? handlers(this.props) : handlers,

@@ -4,7 +4,7 @@ import setDisplayName from './setDisplayName'
 import wrapDisplayName from './wrapDisplayName'
 
 const lifecycle = spec => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
 
   if (process.env.NODE_ENV !== 'production' && spec.hasOwnProperty('render')) {
     console.error(

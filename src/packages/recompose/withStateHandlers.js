@@ -5,7 +5,7 @@ import shallowEqual from './shallowEqual'
 import mapValues from './utils/mapValues'
 
 const withStateHandlers = (initialState, stateUpdaters) => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
 
   class WithStateHandlers extends Component {
     state = typeof initialState === 'function'

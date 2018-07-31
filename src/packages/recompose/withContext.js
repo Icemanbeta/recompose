@@ -3,7 +3,7 @@ import setDisplayName from './setDisplayName'
 import wrapDisplayName from './wrapDisplayName'
 
 const withContext = (childContextTypes, getChildContext) => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
   class WithContext extends Component {
     getChildContext = () => getChildContext(this.props)
 

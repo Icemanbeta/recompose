@@ -3,7 +3,7 @@ import setDisplayName from './setDisplayName'
 import wrapDisplayName from './wrapDisplayName'
 
 const shouldUpdate = test => BaseComponent => {
-  const factory = createFactory(BaseComponent)
+  const factory = typeof BaseComponent === 'function' ? BaseComponent : createFactory(BaseComponent)
   class ShouldUpdate extends Component {
     shouldComponentUpdate(nextProps) {
       return test(this.props, nextProps)
